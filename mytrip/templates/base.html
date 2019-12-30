@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>TripManager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+    </script>
+  </head>
+  <body>
+    <!-- navbar start -->
+    <nav class="navbar fixed-top navbar-expand-lg bg-dark navbar-dark">
+      <!-- brand name -->
+      <a class="navbar-brand" href="/mytrip/home">TripManager</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Things to do</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Events</a>
+          </li>
+          <!-- dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Explore</a>
+            <div class="dropdown-menu">     
+              <a class="dropdown-item" href="">Hotels</a>
+              <a class="dropdown-item" href="">Restaurants</a>
+              <a class="dropdown-item" href="">Movie Theaters</a>
+            </div>
+          </li>
+          <!-- contact -->
+          <li class="nav-item">
+            <a class="nav-link" href="">About Us</a>
+          </li>
+        </ul>
+        <!-- login -->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            {% if usernm %}
+            <a class="nav-link" href="/mytrip/event">{{ usernm }}</a>
+            {% else %}
+            <a class="nav-link" href="/mytrip/login">Login</a>
+            {% endif %}
+          </li>
+          <li class="nav-item">
+            {% if usernm %}
+            <a class="nav-link" href="/mytrip/logout">Logout</a>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- navbar end -->
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>

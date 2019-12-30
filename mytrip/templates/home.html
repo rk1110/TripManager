@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'mytrip/home.css' %}">
+  <img src="/static/mytrip/images/california.jpg" style="margin-top: 3.5em;" height="400px" width="100%">
+  <input class="centered text-center" type="search" placeholder="Where to?">
+  <div class="container">
+    <h2 style="margin-top: 1em;">Nearby Events</h2>
+  </div>
+{% endblock %}
