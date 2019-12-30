@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'mytrip/signup.css' %}">
+  <!-- signup form -->
+  <div class="container">
+    <div class="card bg-dark text-center mx-auto">
+      <div class="card-header">
+        <h2 style="color:darkorange">Welcome</h2>
+        <br>
+        <h4 class="text-white">New user please login here</h4>
+      </div>
+      <div class="card-body">
+        <form id="formData" action="/mytrip/create/" method="POST">{% csrf_token %}
+          <div>
+            <input type="text" class="mx-auto" placeholder="username" name="username" maxlength="10" required>
+          </div>
+          <div>
+            <input type="text" class="mx-auto" id="firstname" placeholder="Firstname" name="firstname">
+          </div>
+          <div>
+            <input type="text" class="mx-auto" id="lastname" placeholder="Lastname" name="lastname">
+          </div>
+          <div>
+            <input type="email" class="mx-auto" placeholder="Enter email" name="email" required>
+          </div>
+          <div>
+            <input type="password" class="mx-auto" placeholder="Password" name="password" minlength="8" required>
+          </div>
+          <div>
+            <input type="password" class="mx-auto" placeholder="Confirm password" name="password1" minlength="8"required>
+          </div>
+          <div>
+            <input type="tel" class="mx-auto" placeholder="Mobile No" name="phone">
+          </div>
+          <button type="submit" class="btn btn-success">Signup</button><br>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
